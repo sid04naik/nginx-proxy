@@ -1,0 +1,19 @@
+{
+  "name": "nginx-proxy",
+  "version": "1.0.1",
+  "main": "nginx.js",
+  "type": "commonjs",
+  "description": "nginx-proxy",
+  "engines": {
+    "node": "20"
+  },
+  "keywords": [
+    "proxy",
+    "nginx-proxy"
+  ],
+  "author": "Siddhant Naik",
+  "license": "GNU",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

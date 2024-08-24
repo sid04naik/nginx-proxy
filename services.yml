@@ -1,0 +1,8 @@
+http:
+  - host: "host.docker.internal"
+    api:
+      v1:
+        - service1:
+            port: 9011
+        - service2:
+            port: 9013
