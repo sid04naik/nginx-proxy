@@ -16,7 +16,32 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./logs/nginx:/var/log/nginx
     restart: always
+    networks:
+      - bridge
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+    networks:
+      - bridge
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb_v1
+    ports:
+      - "8086:8086"
+    environment:
+      INFLUXDB_DB: K6
+      INFLUXDB_ADMIN_USER: administrator
+      INFLUXDB_ADMIN_PASSWORD: administrator
+    volumes:
+      - ./data/influxdb:/var/lib/influxdb
     networks:
       - bridge
 networks:

@@ -19,6 +19,9 @@ http {
     default_type application/octet-stream;
     sendfile on;
     keepalive_timeout 65;
+    # Define log files
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
 `;
 http.forEach((endpoints) => {
   const hostName = endpoints.host;
@@ -44,16 +47,7 @@ http.forEach((endpoints) => {
     });
   }
   nginxConfig += `
-        location / {
-          if ($request_method = OPTIONS) {
-            add_header Access-Control-Allow-Origin *;
-            add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS, PATCH, PUT, DELETE';
-            add_header Access-Control-Allow-Headers 'Authorization, Content-Type';
-            add_header Content-Length 0;
-            add_header Content-Type text/plain;
-            return 204;
-          }
-        }
+
       }
       include servers/*;
   }`;

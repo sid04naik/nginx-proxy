@@ -11,6 +11,10 @@
     "proxy",
     "nginx-proxy"
   ],
+  "scripts": {
+    "dash:demo": "k6 run --out influxdb=http://localhost:8086/K6 tests/performance/demo.js",
+    "perf:demo": "K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_OPEN=true k6 run tests/performance/demo.js"
+  },
   "author": "Siddhant Naik",
   "license": "GNU",
   "dependencies": {
