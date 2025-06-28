@@ -19,6 +19,9 @@ http {
     default_type application/octet-stream;
     sendfile on;
     keepalive_timeout 65;
+    # Define log files
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
 `;
 http.forEach((endpoints) => {
   const hostName = endpoints.host;
@@ -44,6 +47,7 @@ http.forEach((endpoints) => {
     });
   }
   nginxConfig += `
+
       }
       include servers/*;
   }`;
